@@ -1,0 +1,48 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="shortcut icon" href="{% static 'logo.png' %}" type="image/x-icon">
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <title>
+
+        {% block page__title %}
+        MY SITE
+        {% endblock page__title %}
+
+    </title>
+</head>
+
+<body>
+
+    <div class="navbar">
+        <div class="nav__logo">
+            <img src="{% static 'logo.png' %}" alt="">
+        </div>
+
+        <div class="nav__links">
+            <ul>
+                <li><a href="{% url 'home' %}">Home</a></li>
+                <li><a href="{% url 'about' %}">About</a></li>
+                <li><a href="{% url 'contact' %}">Contact</a></li>
+                <li><a href="{% url 'account:login' %}">Login</a></li>
+                <li><a href="{% url 'account:register' %}">Register</a></li>
+                <li><a href="{% url 'account:logout' %}"><i class="fa-solid fa-right-from-bracket"></i></a></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="container">
+        {% block body %}
+        <h1>Salam Millet</h1>
+        {% endblock body %}
+
+    </div>
+
+</body>
+
+</html>

@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+
+{% block body %}
+    <h2>Register Page</h2>
+
+    <form method="post">
+        {% csrf_token %}
+        {{form.as_p}}
+        <br>
+        <button class="btn">Qeydiyyatdan Keç</button>
+    </form>
+{% endblock body %}
