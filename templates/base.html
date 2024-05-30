@@ -29,12 +29,36 @@
                 <li><a href="{% url 'home' %}">Home</a></li>
                 <li><a href="{% url 'about' %}">About</a></li>
                 <li><a href="{% url 'contact' %}">Contact</a></li>
-                <li><a href="{% url 'account:login' %}">Login</a></li>
-                <li><a href="{% url 'account:register' %}">Register</a></li>
-                <li><a href="{% url 'account:logout' %}"><i class="fa-solid fa-right-from-bracket"></i></a></li>
+                
+                {% if request.user.is_authenticated %}
+                    <!-- <li><a href="{% url 'contact' %}">Məqalələr</a></li> -->
+                    <div class="dropdown">
+                        Məqalələr <i class="fa-solid fa-chevron-down"></i>
+                        <div class="dropdown-content">
+                          <a href="{% url 'our-blogs' %}">Məqalələrimiz</a>
+                          <a href="{% url 'my-blogs' %}">Məqalələrim</a>
+                        </div>
+                      </div>
+                    <li><a href="{% url 'account:logout' %}"><i class="fa-solid fa-right-from-bracket"></i></a></li>
+                {% else %}
+                    <li><a href="{% url 'account:login' %}">Login</a></li>
+                    <li><a href="{% url 'account:register' %}">Register</a></li>
+                {% endif %}
             </ul>
         </div>
     </div>
+
+    {% if messages %}
+      
+      {% for message in messages %}
+        {% if message.tags == "warning" %}
+            <div class="alert__warning">{{message}}</div>
+        {% else %}
+            <div class="alert__success">{{message}}</div>
+        {% endif %}
+      {% endfor %}
+        
+    {% endif %}
 
     <div class="container">
         {% block body %}

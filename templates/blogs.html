@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+
+{% block page__title %}
+    Our Blogs
+{% endblock page__title %}
+    
+
+
+{% block body %}
+    <h2>Məqalələrimiz</h2>
+
+    <div class="articles">
+        <ul>
+            
+            {% for article in articles %}
+                <li>
+                    <h3>{{article.author}}</h3>
+                    <h4>{{article.title}}</h4>
+                    <p>{{article.content}}</p>
+                    <small>{{article.created_date}}</small>
+                </li>
+                <hr>
+            {% endfor %}
+                
+        </ul>
+    </div>
+{% endblock body %}
+    
