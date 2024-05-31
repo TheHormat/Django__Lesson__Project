@@ -31,14 +31,8 @@
                 <li><a href="{% url 'contact' %}">Contact</a></li>
                 
                 {% if request.user.is_authenticated %}
-                    <!-- <li><a href="{% url 'contact' %}">Məqalələr</a></li> -->
-                    <div class="dropdown">
-                        Məqalələr <i class="fa-solid fa-chevron-down"></i>
-                        <div class="dropdown-content">
-                          <a href="{% url 'our-blogs' %}">Məqalələrimiz</a>
-                          <a href="{% url 'my-blogs' %}">Məqalələrim</a>
-                        </div>
-                      </div>
+                    <li><a href="{% url 'articles' %}">Məqalələr</a></li>
+                    <li><a href="{% url 'dashboard' %}"><i class="fa-solid fa-user"></i></a></li>
                     <li><a href="{% url 'account:logout' %}"><i class="fa-solid fa-right-from-bracket"></i></a></li>
                 {% else %}
                     <li><a href="{% url 'account:login' %}">Login</a></li>

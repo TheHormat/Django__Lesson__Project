@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+
+{% block page__title %}
+    İstifadəçi Paneli
+{% endblock page__title %}
+    
+
+
+{% block body %}
+{% if request.user.is_authenticated %}
+    <div class="user__info">
+        <h2>Xoş gəldiniz, <span>{{request.user.username}}</span></h2>
+    </div>
+{% else %}
+    <div class="user__info">
+        <h2>Giriş etməmisiz...</h2>
+    </div>
+{% endif %}
+
+<div class="articles">
+    <ul>
+        
+        {% for article in articles %}
+            <li>
+                <h3>{{article.author}}</h3>
+                <h4><a href="{% url 'article-detail' article.id %}">{{article.title}}</a></h4>
+                <p>{{article.content|truncatechars:70}}</p>
+                <small>{{article.created_date}}</small>
+            </li>
+            <hr>
+        {% endfor %}
+    </ul>
+</div>
+
+<br>
+<a href="{% url 'addarticle' %}"><button class="btn">Məqalə əlavə et</button></a>
+{% endblock body %}

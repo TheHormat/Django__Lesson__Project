@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+
+{% block page__title %}
+Məqalə Detal
+{% endblock page__title %}
+
+
+
+{% block body %}
+<div class="articles">
+
+    <h3>Yazar: {{article.author}}</h3>
+    <h4>Başlıq: {{article.title}}</h4>
+    <p>Məzmun: {{article.content}}</p>
+    <small>Paylaşıldığı tarixi: {{article.created_date}}</small>
+    <hr>
+</div>
+{% endblock body %}

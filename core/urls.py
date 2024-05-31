@@ -16,19 +16,16 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from article.views import (
-    home__view, 
-    about__view, 
-    contact__view, 
-    my__blogs__view, 
-    our__blogs__view
-)
+from article.views import *
+
 urlpatterns = [
     path("", home__view, name="home"),
     path("about/", about__view, name="about"),
     path("contact/", contact__view, name="contact"),
-    path("blogs/", our__blogs__view, name="our-blogs"),
-    path("my-blogs/", my__blogs__view, name="my-blogs"),
+    path("articles/", articles__view, name="articles"),
+    path("article-detail/<int:id>", article__detail__view, name="article-detail"),
+    path("addarticle/", addarticle__view, name="addarticle"),
+    path("dashboard/", dashboard__view, name="dashboard"),
     path("account/", include("account.urls")),
     path('admin/', admin.site.urls),
 ]

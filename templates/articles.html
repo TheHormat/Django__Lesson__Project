@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+
+{% block page__title %}
+Məqalələrimiz
+{% endblock page__title %}
+
+
+
+{% block body %}
+<h2>Məqalələrimiz</h2>
+
+<div class="articles">
+    <ul>
+        {% for article in articles %}
+        <li>
+            <h3>{{article.author}}</h3>
+            <h4><a href="{% url 'article-detail' article.id %}">{{article.title}}</a></h4>
+            <p>{{article.content|truncatechars:70}}</p>
+            <small>{{article.created_date}}</small>
+        </li>
+        <hr>
+        {% endfor %}
+    </ul>
+</div>
+{% endblock body %}

@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+
+{% block page__title %}
+    Məqalə əlavə et
+{% endblock page__title %}
+    
+
+
+{% block body %}
+    <h2>Məqalə əlavə et</h2><br>
+
+    <form method="post">
+        {% csrf_token %}
+        {{form.as_p}}
+
+        <br>
+        <button class="btn">Əlavə et</button>
+    </form>
+{% endblock body %}
+    
