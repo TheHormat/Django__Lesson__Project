@@ -10,8 +10,9 @@
 {% block body %}
     <h2>Məqalə əlavə et</h2><br>
 
-    <form method="post">
+    <form method="post" enctype="multipart/form-data">
         {% csrf_token %}
+        {{form.media}}
         {{form.as_p}}
 
         <br>

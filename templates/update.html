@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+
+{% block page__title %}
+    Məqalə güncəllə
+{% endblock page__title %}
+    
+
+
+{% block body %}
+    <h2>Məqalə güncəllə</h2><br>
+
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{form.media}}
+        {{form.as_p}}
+
+        <br>
+        <button class="btn">güncəllə</button>
+    </form>
+{% endblock body %}
+    

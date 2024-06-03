@@ -106,3 +106,9 @@ a {
     font-size: 34px;
     font-weight: bold;
 }
+
+.articles img {
+    width: 500px;
+    height: 500px;
+    object-fit: cover;
+}

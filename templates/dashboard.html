@@ -25,10 +25,16 @@
             <li>
                 <h3>{{article.author}}</h3>
                 <h4><a href="{% url 'article-detail' article.id %}">{{article.title}}</a></h4>
-                <p>{{article.content|truncatechars:70}}</p>
+                <p>{{article.content|safe|truncatechars:70}}</p>
                 <small>{{article.created_date}}</small>
+                <br><br>
+                <a href="{% url 'update' article.id %}"><i class="fa-solid fa-gear"></i></a>
+                <a href="{% url 'delete' article.id %}"><i class="fa-solid fa-trash"></i></a>
+                <br>
             </li>
+            <br>
             <hr>
+            <br>
         {% endfor %}
     </ul>
 </div>
