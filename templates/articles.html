@@ -10,6 +10,17 @@ Məqalələrimiz
 {% block body %}
 <h2>Məqalələrimiz</h2>
 
+<div class="search__form">
+    <form>
+        {% csrf_token %}
+        <input name="keyword" type="text" placeholder="Axtar...">
+        <button type="submit" class="btn">Axtar</button>
+    </form>
+</div>
+
+
+
+{% if articles %}
 <div class="articles">
     <ul>
         {% for article in articles %}
@@ -23,4 +34,14 @@ Məqalələrimiz
         {% endfor %}
     </ul>
 </div>
+
+<br><br>
+{% else %}
+<div class="alert__warning">Məqalə yoxdur...</div>
+{% endif %}
+    
+
+<a href="{% url 'addarticle' %}"><button class="btn">Əlavə et</button></a>
+<br><br>
+
 {% endblock body %}

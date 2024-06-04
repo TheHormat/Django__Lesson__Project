@@ -18,6 +18,43 @@ Məqalə Detal
     {% if article.image %}
     <img src="{{article.image.url}}" alt="">
     {% endif %}
-    <hr>
+</div>
+
+
+<div class="comments">
+    <h2>Şərhlər</h2>
+    {% if comments %}
+        
+        {% for comment in comments %}
+            <div class="comment">
+                <h4>{{comment.comment_date}} zamani {{comment.comment_author}} terefinden yazildi:</h4>
+                <h5>{{comment.comment_content}}</h5>
+            </div>
+            <br>
+            <hr>
+            <br>
+        {% endfor %}
+    
+    {% else %}
+        <div class="alert__warning">Hələki heç bir şərh yoxdur...</div> 
+    {% endif %}
+</div>
+
+
+<div class="comment__form">
+    <form action="{% url 'comment' article.id %}" method="post">
+        {% csrf_token %}
+
+        <div class="form__group">
+            <label for="commentAuthor">Ad</label>
+            <input type="text" name="comment_author" placeholder="Adınızı daxil edin..." id="commentAuthor">
+        </div>
+        <div class="form__group">
+            <label for="commentContent">Şərhiniz</label>
+            <textarea type="text" name="comment_content" rows="10" cols="50" placeholder="Şərhinizi daxil edin..." id="commentContent"></textarea>
+        </div>
+
+        <button type="submit" class="btn">Göndər</button>
+    </form>
 </div>
 {% endblock body %}

@@ -13,3 +13,15 @@ class Article(models.Model):
 
     def __str__(self):
         return f"{self.title} | {self.author}"
+    
+    
+    
+class Comment(models.Model):
+    article = models.ForeignKey(Article, on_delete=models.CASCADE, verbose_name="Məqalə", related_name="comments")
+    comment_author = models.CharField(max_length=50, verbose_name="Ad")
+    comment_content = models.TextField(verbose_name="Şərh")
+    comment_date = models.DateTimeField(auto_now_add=True)
+    
+    
+    def __str__(self):
+            return f"{self.comment_author}"

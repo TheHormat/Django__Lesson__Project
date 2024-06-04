@@ -29,6 +29,7 @@ urlpatterns = [
     path("addarticle/", addarticle__view, name="addarticle"),
     path("update/<int:id>", article__update__view, name="update"),
     path("delete/<int:id>", article__delete__view, name="delete"),
+    path("comment/<int:id>", addcomment__view, name="comment"),
     path("dashboard/", dashboard__view, name="dashboard"),
     path("account/", include("account.urls")),
     path('admin/', admin.site.urls),
